@@ -6,7 +6,7 @@ export function Footer() {
   const socialLinks = [
     {
       icon: Mail,
-      href: "mailto:oscarfutbolpetrer@gmail.com",
+      href: "mailto:oscarmedinaamat@gmail.com",
       label: "Email",
     },
     {
@@ -16,13 +16,8 @@ export function Footer() {
     },
     {
       icon: Github,
-      href: "https://github.com/OMAUA",
+      href: "https://github.com/OscarMA10",
       label: "GitHub",
-    },
-    {
-      icon: Instagram,
-      href: "https://www.instagram.com/oscarma_10",
-      label: "Instagram",
     },
   ];
 

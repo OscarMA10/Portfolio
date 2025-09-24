@@ -1,5 +1,6 @@
 import { Calendar, MapPin, Building, GraduationCap } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { experiences } from "@/data/experiences";
 import { useI18n } from "@/contexts/I18nContext";
 
@@ -76,12 +77,13 @@ export function Experience() {
                         {experience.skills && (
                           <div className="flex flex-wrap gap-2">
                             {experience.skills.map((skill) => (
-                              <span
+                              <Badge
                                 key={skill}
-                                className="px-3 py-1 text-xs bg-primary/10 text-primary rounded-full"
+                                variant="secondary"
+                                className="text-xs bg-primary/10 text-primary"
                               >
                                 {getSkillLabel(skill)}
-                              </span>
+                              </Badge>
                             ))}
                           </div>
                         )}

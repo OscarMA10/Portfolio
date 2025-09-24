@@ -9,8 +9,8 @@ export function Contact() {
     {
       icon: Mail,
       label: "Email",
-      value: "oscarfutbolpetrer@gmail.com",
-      href: "mailto:oscarfutbolpetrer@gmail.com",
+      value: "oscarmedinaamat@gmail.com",
+      href: "mailto:oscarmedinaamat@gmail.com",
       color: "text-blue-600",
     },
     {
@@ -23,16 +23,9 @@ export function Contact() {
     {
       icon: Github,
       label: "GitHub",
-      value: "OMAUA",
-      href: "https://github.com/OMAUA",
+      value: "OscarMA10",
+      href: "https://github.com/OscarMA10",
       color: "text-gray-700",
-    },
-    {
-      icon: Instagram,
-      label: "Instagram",
-      value: "@oscarma_10",
-      href: "https://www.instagram.com/oscarma_10",
-      color: "text-pink-600",
     },
   ];
 
@@ -53,20 +46,23 @@ export function Contact() {
           </div>
 
           {/* Cards de Contacto */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {contactInfo.map((contact, index) => {
               const IconComponent = contact.icon;
+              const isLast = index === contactInfo.length - 1;
               return (
                 <Card
                   key={contact.label}
-                  className="card card-hover p-8 reveal group text-center hover:border-primary/20"
+                  className={`card card-hover reveal group text-center hover:border-primary/20 w-full ${
+                    isLast ? 'sm:col-span-2 lg:col-span-1' : ''
+                  }`}
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <a
                     href={contact.href}
                     target={contact.href.startsWith('mailto:') ? '_self' : '_blank'}
                     rel="noopener noreferrer"
-                    className="flex flex-col items-center space-y-6 group-hover:scale-105 transition-all duration-300"
+                    className="flex flex-col items-center space-y-6 group-hover:scale-105 transition-all duration-300 w-full h-full p-8"
                   >
                     <div className="relative">
                       <div className="p-6 rounded-full bg-gradient-to-br from-primary/10 to-primary/20 group-hover:from-primary/20 group-hover:to-primary/30 transition-all duration-300 shadow-lg group-hover:shadow-xl">

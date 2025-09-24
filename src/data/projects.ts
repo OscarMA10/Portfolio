@@ -27,7 +27,7 @@ export const projects: Project[] = [
     },
     image: tfgImage,
     technologies: ["React", "Tailwind CSS", "Leaflet", "Recharts", "Apache", "Linux", "VPS"],
-    githubUrl: "https://github.com/OMAUA/TFG",
+    githubUrl: "https://github.com/OscarMA10/TFG",
     demoUrl: "https://oscar-medina-amat-tfg.vercel.app",
     featured: true,
   },
