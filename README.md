@@ -1,111 +1,86 @@
 # Portfolio - Óscar Medina Amat
 
-Single Page Application (SPA) creada con React + Vite y Tailwind CSS. Incluye dark/light mode, i18n (ES/EN), animaciones “scroll reveal”, secciones dinámicas (proyectos y formación/experiencia) y SEO básico listo para despliegue en Vercel.
+Single Page Application (SPA) profesional creada con React 18, Vite y Tailwind CSS. Diseñada para ser rápida, accesible y fácil de mantener.
 
-## Características
+## Características Principales
 
-- SPA con React 18 + Vite 5
-- Estilos con Tailwind CSS y componentes UI (shadcn/ui + Radix)
-- Dark/Light mode con toggle y persistencia
-- Internacionalización (ES/EN) con contexto propio y persistencia
-- Animaciones suaves (scroll reveal con IntersectionObserver)
-- Datos dinámicos de proyectos y formación/experiencia en `src/data/*`
-- Accesibilidad: focus visible, `aria-label` en acciones clave
-- SEO básico: meta-etiquetas, Open Graph/Twitter, `robots.txt` y `sitemap.xml`
+- **Rendimiento**: Carga rápida con imágenes WebP y Vite.
+- **Diseño Moderno**: UI limpia con `shadcn/ui`, modo claro/oscuro persistente y animaciones "Scroll Reveal".
+- **Configuración Centralizada**: Gestión sencilla de datos globales en `src/config/site.ts`.
+- **SEO Optimizado**:
+  - Títulos dinámicos con `react-helmet-async`.
+  - Sitemap (`sitemap.xml`) y `robots.txt` incluidos.
+  - Etiquetas OpenGraph y Twitter Cards para redes sociales.
+- **Internacionalización**: Soporte completo ES/EN con persistencia.
+- **Adaptabilidad**: Diseño 100% Responsive. Soporte especial para capturas de apps móviles verticales.
 
-## Tech Stack
+## Stack Tecnológico
 
-- React 18, React Router
-- TypeScript
-- Tailwind CSS, shadcn/ui, Radix UI, Lucide Icons
-- Vite (build dev/prod)
-- TanStack Query (para futuros datos remotos)
+- **Core**: React 18 + TypeScript + Vite
+- **Estilos**: Tailwind CSS 3
+- **UI Components**: shadcn/ui + Radix UI + Lucide Icons
+- **Iconos Tech**: React Icons (SiIcons) + SVG Híbridos
+- **SEO**: React Helmet Async
+- **Deploy**: Optimizado para Vercel/Netlify
 
-## Estructura del proyecto
+## Estructura del Proyecto
 
 ```text
-src/
-  assets/                 # Imágenes y estáticos internos
-  components/             # Componentes de la UI y secciones
-  contexts/               # Contextos (Theme, I18n)
-  data/                   # Datos dinámicos (projects, experiences)
-  hooks/                  # Hooks (scroll reveal, etc.)
-  lib/                    # Utilidades
-  pages/                  # Rutas (Index, NotFound)
-  main.tsx, App.tsx       # Entrada y layout principal
 public/
-  favicon.ico, og-image.svg, robots.txt, sitemap.xml, Oscar_Medina_Amat_CV.pdf
+├── favicon.ico
+├── og-image.svg
+├── Oscar_Medina_Amat_CV.pdf
+├── robots.txt
+└── sitemap.xml
+src/
+├── assets/             # Imágenes optimizadas (.webp)
+├── components/         # Bloques de UI (Header, Hero, Projects...)
+├── config/             # Configuración Global (site.ts)
+├── contexts/           # Lógica global (Theme, I18n)
+├── data/               # Datos de contenido (projects, experience)
+├── hooks/              # Hooks personalizados
+├── pages/              # Rutas principales
+└── App.tsx             # Layout y Providers
 ```
 
-## Requisitos
+## Puesta en Marcha
 
-- Node.js 18+
+1. **Instalar dependencias**:
+   ```bash
+   npm install
+   ```
+2. **Iniciar servidor de desarrollo**:
+   ```bash
+   npm run dev
+   ```
+3. **Construir para producción**:
+   ```bash
+   npm run build
+   ```
 
-## Puesta en marcha
+## Guía de Personalización
 
-```bash
-npm install
-npm run dev
-```
+### 1. Datos Generales
 
-Abrir: `http://localhost:8080`
+Edita `src/config/site.ts` para cambiar instantáneamente:
 
-## Scripts
+- Nombre y Título
+- Enlaces a Redes Sociales (LinkedIn, GitHub, Email)
+- Items del Menú de Navegación
 
-- `npm run dev`: entorno de desarrollo (Vite)
-- `npm run build`: build producción (dist/)
-- `npm run preview`: previsualizar build
-- `npm run lint`: ejecutar ESLint
+### 2. Proyectos
 
-## Despliegue (Vercel)
+Edita `src/data/projects.ts`.
 
-1) Importa el repositorio en Vercel.
-2) Build Command: `vite build` - Output: `dist`.
-3) La app es SPA, Vercel sirve `index.html` por defecto (fallback ok).
-4) Dominios y SEO: actualiza si cambias dominio los campos en:
-   - `index.html` → `<link rel="canonical">`, `og:url`.
-   - `public/robots.txt` → `Sitemap:`.
-   - `public/sitemap.xml` → `<loc>`.
+- **Imágenes**: Usa formato `.webp` para mejor rendimiento.
+- **Apps Móviles**: Si tu proyecto es una app vertical, añade la propiedad `isMobile: true` para activar el diseño especial de visualización.
 
-## Internacionalización (ES/EN)
+### 3. SEO
 
-- Contexto: `src/contexts/I18nContext.tsx` expone `language`, `toggleLanguage`, `t(key)`.
-- Toggle: `LanguageToggle` en el header.
-- Textos:
-  - Estáticos: via `t('...')` en componentes.
-  - Datos (proyectos/experiencias): campos `{ es, en }` y render con `language`.
-- Añadir nuevas traducciones: agrega claves en `I18nContext.tsx` o añade pares `{ es, en }` en los datos.
+El componente `<SEO/>` gestiona automáticamente los metadatos.
 
-## Modo oscuro/claro
-
-- Contexto: `ThemeContext.tsx` con `theme`, `toggleTheme`, persistencia y clase `dark` en `<html>`.
-- Toggle: `ThemeToggle` en el header.
-
-## Animaciones (scroll reveal)
-
-- Clases: `reveal`, `reveal-delay-1`, `reveal-delay-2` + `.show` al intersectar.
-- Hook: `useRevealOnScroll` inicializado en `App`.
-- Respeta `prefers-reduced-motion` (desactiva animaciones para accesibilidad).
-
-## Accesibilidad
-
-- Botones con `aria-label` (código/demo de proyectos, scroll-to-top)
-- Focus visible con utilidades de Tailwind + tokens de color
-
-## SEO
-
-- Meta SEO y Open Graph/Twitter en `index.html`
-- `public/og-image.svg` para tarjetas sociales
-- `robots.txt` y `sitemap.xml` listos
-
-## Personalización rápida
-
-- Nombre y rol: `Footer.tsx` y `Hero.tsx`
-- Enlaces sociales: `Footer.tsx`
-- Proyectos: `src/data/projects.ts`
-- Formación/Experiencia: `src/data/experiences.ts`
-- Paleta/tema: tokens en `src/index.css` y `tailwind.config.ts`
+- Para cambiar la imagen por defecto al compartir en redes, reemplaza `public/og-image.svg`.
 
 ## Licencia
 
-Uso personal. Adapta libremente este proyecto para tu portfolio.
+Uso personal. Siéntete libre de usar este código como base para tu propio portfolio.

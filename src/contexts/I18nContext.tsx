@@ -33,7 +33,7 @@ const translations: Translations = {
 
   'projects.title': { es: 'Proyectos', en: 'Projects' },
   'projects.code': { es: 'Código', en: 'Code' },
-  'projects.demo': { es: 'Demo', en: 'Live Demo' },
+  'projects.demo': { es: 'Demo', en: 'Demo' },
   'projects.ariaCode': { es: 'Ver código del proyecto', en: 'View project code' },
   'projects.ariaDemo': { es: 'Abrir demo del proyecto', en: 'Open project demo' },
 

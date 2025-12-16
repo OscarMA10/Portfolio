@@ -5,9 +5,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { I18nProvider } from "@/contexts/I18nContext";
+import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -17,16 +19,19 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="light" storageKey="portfolio-theme">
         <I18nProvider>
-          <TooltipProvider>
-            <Toaster/>
-            <Sonner/>
-            <BrowserRouter>
-              <Routes>
-                <Route path="/" element={<Index/>}/>
-                <Route path="*" element={<NotFound/>}/>
-              </Routes>
-            </BrowserRouter>
-          </TooltipProvider>
+          <HelmetProvider>
+            <TooltipProvider>
+              <Toaster/>
+              <Sonner/>
+              <ScrollToTop />
+              <BrowserRouter>
+                <Routes>
+                  <Route path="/" element={<Index/>}/>
+                  <Route path="*" element={<NotFound/>}/>
+                </Routes>
+              </BrowserRouter>
+            </TooltipProvider>
+          </HelmetProvider>
         </I18nProvider>
       </ThemeProvider>
     </QueryClientProvider>

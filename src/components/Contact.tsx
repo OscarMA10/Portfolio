@@ -3,28 +3,30 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useI18n } from "@/contexts/I18nContext";
 
+import { siteConfig } from "@/config/site";
+
 export function Contact() {
   const { t } = useI18n();
   const contactInfo = [
     {
-      icon: Mail,
+      icon: siteConfig.social.email.icon,
       label: "Email",
-      value: "oscarmedinaamat@gmail.com",
-      href: "mailto:oscarmedinaamat@gmail.com",
+      value: siteConfig.social.email.address,
+      href: siteConfig.social.email.url,
       color: "text-blue-600",
     },
     {
-      icon: Linkedin,
+      icon: siteConfig.social.linkedin.icon,
       label: "LinkedIn",
-      value: "óscar-medina-amat",
-      href: "https://www.linkedin.com/in/óscar-medina-amat",
+      value: siteConfig.social.linkedin.username,
+      href: siteConfig.social.linkedin.url,
       color: "text-blue-700",
     },
     {
-      icon: Github,
+      icon: siteConfig.social.github.icon,
       label: "GitHub",
-      value: "OscarMA10",
-      href: "https://github.com/OscarMA10",
+      value: siteConfig.social.github.username,
+      href: siteConfig.social.github.url,
       color: "text-gray-700",
     },
   ];

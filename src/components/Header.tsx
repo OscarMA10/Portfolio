@@ -4,11 +4,13 @@ import { ThemeToggle } from "./ThemeToggle";
 import { LanguageToggle } from "./LanguageToggle";
 import { useI18n } from "@/contexts/I18nContext";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
 
 export function Header() {
   const { t } = useI18n();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,21 +21,26 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = [
-    { name: t('nav.home'), href: "#hero" },
-    { name: t('nav.about'), href: "#about" },
-    { name: t('nav.projects'), href: "#projects" },
-    { name: t('nav.experience'), href: "#experience" },
-    { name: t('nav.contact'), href: "#contact" },
-  ];
+  // ScrollSpy Logic
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`);
+          }
+        });
+      },
+      { rootMargin: "-50% 0px -50% 0px" } // Trigger when section is in middle of viewport
+    );
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-    setIsMobileMenuOpen(false);
-  };
+    siteConfig.nav.forEach((item) => {
+      const element = document.querySelector(item.href);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <header
@@ -47,26 +54,34 @@ export function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <button
-              onClick={() => scrollToSection("#hero")}
+            <a
+              href="#hero"
               className="text-xl md:text-2xl font-bold text-foreground hover:text-primary transition-colors"
             >
-              Óscar Medina Amat
-            </button>
+              {siteConfig.name}
+            </a>
           </div>
 
           {/* Navegación Escritorio */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              {navItems.map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors duration-200 relative group"
+              {siteConfig.nav.map((item) => (
+                <a
+                  key={item.key}
+                  href={item.href}
+                  className={`px-3 py-2 text-sm font-medium transition-colors duration-200 relative group ${
+                    activeSection === item.href
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-primary"
+                  }`}
                 >
-                  {item.name}
-                  <span className="absolute inset-x-0 bottom-0 h-0.5 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></span>
-                </button>
+                  {t(item.key as any)}
+                  <span
+                    className={`absolute inset-x-0 bottom-0 h-0.5 bg-primary transform transition-transform duration-200 origin-left ${
+                      activeSection === item.href ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                    }`}
+                  ></span>
+                </a>
               ))}
             </div>
           </div>
@@ -98,14 +113,19 @@ export function Header() {
         {isMobileMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-background/95 backdrop-blur-md border-t border-border">
-              {navItems.map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-muted-foreground hover:text-primary block px-3 py-2 text-base font-medium transition-colors duration-200 w-full text-left"
+              {siteConfig.nav.map((item) => (
+                <a
+                  key={item.key}
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`block px-3 py-2 text-base font-medium transition-colors duration-200 w-full text-left ${
+                    activeSection === item.href
+                      ? "text-primary bg-primary/10 rounded-md"
+                      : "text-muted-foreground hover:text-primary"
+                  }`}
                 >
-                  {item.name}
-                </button>
+                  {t(item.key as any)}
+                </a>
               ))}
             </div>
           </div>

@@ -1,5 +1,6 @@
-import tfgImage from "@/assets/foto_tfg.png";
-import fieldmasterImage from "@/assets/foto_fieldmaster.png";
+import tfgImage from "@/assets/foto_tfg.webp";
+import fieldmasterImage from "@/assets/foto_fieldmaster.webp";
+import ordenaPlusImage from "@/assets/foto_ordenaplus.webp";
 
 export type LocalizedString = { es: string; en: string };
 
@@ -12,18 +13,19 @@ export interface Project {
   githubUrl: string;
   demoUrl: string;
   featured?: boolean;
+  isMobile?: boolean;
 }
 
 export const projects: Project[] = [
   {
     id: 1,
     title: {
-      es: "Desarrollo de una aplicación web para la visualización de datos ambientales en espacios naturales",
-      en: "Web app for visualizing environmental data in natural areas",
+      es: "TFG - Aplicación web para la visualización de datos ambientales en espacios naturales",
+      en: "TFG - Web app for visualizing environmental data in natural areas",
     },
     description: {
-      es: "Trabajo de Fin de Grado que desarrolla una aplicación web interactiva para la visualización de datos ambientales en el Parque Natural de la Laguna de Torrevieja. La herramienta facilita la comprensión y análisis de información proveniente de sensores IoT distribuidos por las estaciones de monitorización del parque, registrando variables como temperatura, humedad y velocidad del viento. El proyecto incluye tres secciones principales: Mapa con vista satelital y datos en tiempo real, Datos con estadísticas y gráficos, y Previsiones con estimaciones futuras basadas en modelos de datos recopilados.",
-      en: "Final Degree Project that develops an interactive web application to visualize environmental data in the Laguna de Torrevieja Natural Park. It helps understand and analyze information from IoT sensors across monitoring stations, recording variables like temperature, humidity, and wind speed. It includes three main sections: Map with satellite view and near-real-time data, Data with statistics and charts, and Forecasts with future estimates based on collected data models.",
+      es: "Trabajo de Fin de Grado desarrollado para visualizar datos ambientales del Parque Natural de la Laguna de Torrevieja. Incluye mapa satelital, estadísticas, gráficas y previsiones climáticas basadas en modelos de datos.",
+      en: "Final Degree Project developed to visualize environmental data from Laguna de Torrevieja Natural Park. Includes satellite map, statistics, charts, and weather forecasts based on data models.",
     },
     image: tfgImage,
     technologies: ["React", "Tailwind CSS", "Leaflet", "Recharts", "Apache", "Linux", "VPS"],
@@ -38,13 +40,30 @@ export const projects: Project[] = [
       en: "FieldMaster - 3D Sports Strategy Platform",
     },
     description: {
-      es: "Proyecto desarrollado durante el cuarto curso del grado por el grupo LiteSpark. FieldMaster es una innovadora plataforma web que permite diseñar, simular y exportar estrategias deportivas en 3D. Ofrece un entorno inmersivo para crear y visualizar jugadas para deportes como fútbol y baloncesto, con funcionalidades como diseñador de jugadas intuitivo, simulaciones personalizables, biblioteca de estrategias, modo de aprendizaje interactivo y un asistente conversacional inteligente (ChatBot). Utiliza un motor gráfico basado en Three.js para visualizaciones realistas y está diseñado tanto para uso profesional como recreativo.",
-      en: "Project developed during the fourth year of the degree by the LiteSpark group. FieldMaster is a web platform to design, simulate, and export 3D sports strategies. It offers an immersive environment to create and visualize plays for sports like football and basketball, featuring an intuitive play designer, customizable simulations, strategy library, interactive learning mode, and a conversational assistant. It uses a Three.js-based graphics engine and targets both professional and recreational use.",
+      es: "Plataforma web innovadora para diseñar y simular estrategias deportivas en 3D. Ofrece diseñador de jugadas intuitivo, simulaciones personalizables, biblioteca de estrategias, modo aprendizaje y asistente conversacional.",
+      en: "Innovative web platform to design and simulate 3D sports strategies. Features intuitive play designer, customizable simulations, strategy library, interactive learning mode, and conversational assistant.",
     },
     image: fieldmasterImage,
     technologies: ["Angular", "Three.js", "Node.js", "Express", "MySQL", "Asistente Conversacional", "Gráficos 3D"],
-    githubUrl: "https://github.com/ABPMultimediaUA/litespark_abp24",
+    githubUrl: "",
     demoUrl: "https://fieldmaster.ovh",
     featured: true,
+  },
+  {
+    id: 3,
+    title: {
+      es: "Ordena+ - Organizador Inteligente de Galería",
+      en: "Ordena+ - Smart Gallery Organizer",
+    },
+    description: {
+      es: 'Aplicación Android nativa desarrollada con Flutter. Permite clasificar fotos y videos rápidamente mediante un sistema de "Seleccionar y Mover". Incluye gestión de estado con Riverpod, base de datos local SQFLite para metadatos y caché, y acceso optimizado a medios con Photo Manager.',
+      en: 'Native Android application built with Flutter. Enables fast photo and video classification via a "Select and Move" system. Features state management with Riverpod, local SQFLite database for metadata and caching, and optimized media access using Photo Manager.',
+    },
+    image: ordenaPlusImage,
+    technologies: ["Flutter", "Dart", "Riverpod", "SQFLite", "GoRouter", "Android"],
+    githubUrl: "https://github.com/OscarMA10/OrdenaPlus",
+    demoUrl: "",
+    featured: true,
+    isMobile: true,
   },
 ];

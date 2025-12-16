@@ -1,22 +1,24 @@
 import { Heart, Mail, Linkedin, Github, Instagram } from "lucide-react";
 import { useI18n } from "@/contexts/I18nContext";
 
+import { siteConfig } from "@/config/site";
+
 export function Footer() {
   const { t } = useI18n();
   const socialLinks = [
     {
-      icon: Mail,
-      href: "mailto:oscarmedinaamat@gmail.com",
+      icon: siteConfig.social.email.icon,
+      href: siteConfig.social.email.url,
       label: "Email",
     },
     {
-      icon: Linkedin,
-      href: "https://www.linkedin.com/in/óscar-medina-amat",
+      icon: siteConfig.social.linkedin.icon,
+      href: siteConfig.social.linkedin.url,
       label: "LinkedIn",
     },
     {
-      icon: Github,
-      href: "https://github.com/OscarMA10",
+      icon: siteConfig.social.github.icon,
+      href: siteConfig.social.github.url,
       label: "GitHub",
     },
   ];
@@ -35,7 +37,7 @@ export function Footer() {
               onClick={scrollToTop}
               className="text-2xl font-bold text-foreground hover:text-primary transition-colors"
             >
-              Óscar Medina Amat
+              {siteConfig.name}
             </button>
             <p className="text-muted-foreground mt-2">
               {t('footer.role')}
@@ -46,11 +48,12 @@ export function Footer() {
           <div className="flex justify-center space-x-4">
             {socialLinks.map((social) => {
               const IconComponent = social.icon;
+              const isMailto = social.href.startsWith('mailto:');
               return (
                 <a
                   key={social.label}
                   href={social.href}
-                  target={social.href.startsWith('mailto:') ? '_self' : '_blank'}
+                  target={isMailto ? '_self' : '_blank'}
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-125 hover:shadow-lg transform transition-all duration-300 ease-out"
                   aria-label={social.label}

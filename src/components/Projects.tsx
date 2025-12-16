@@ -24,20 +24,38 @@ export function Projects() {
           {projects.map((project, index) => (
             <Card
               key={project.id}
-              className="card card-hover overflow-hidden group reveal"
+              className="card card-hover overflow-hidden group reveal flex flex-col h-full"
               style={{ animationDelay: `${index * 150}ms` }}
             >
               {/* Imagen Proyecto */}
-              <div className="relative overflow-hidden">
-                <div className="aspect-video flex items-center justify-center">
+              <div className="relative overflow-hidden shrink-0">
+                <div className="aspect-video flex items-center justify-center bg-muted relative">
                   {project.image ? (
-                    <img
-                      src={project.image}
-                      alt={`Imagen del proyecto ${project.title}`}
-                      className="w-full h-full"
-                      loading="lazy"
-                      decoding="async"
-                    />
+                    project.isMobile ? (
+                      <>
+                        {/* Fondo borroso para móviles */}
+                        <div 
+                          className="absolute inset-0 bg-cover bg-center blur-xl opacity-50 scale-110"
+                          style={{ backgroundImage: `url(${project.image})` }}
+                        />
+                        {/* Imagen contenedora */}
+                        <img
+                          src={project.image}
+                          alt={`Imagen del proyecto ${project.title}`}
+                          className="absolute inset-0 m-auto h-full w-auto object-contain z-10 p-2"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </>
+                    ) : (
+                      <img
+                        src={project.image}
+                        alt={`Imagen del proyecto ${project.title}`}
+                        className="w-full h-full"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    )
                   ) : (
                     <div className="text-6xl opacity-20">🚀</div>
                   )}
@@ -45,8 +63,8 @@ export function Projects() {
               </div>
 
               {/* Contenido Proyecto */}
-              <div className="p-6 space-y-4">
-                <div>
+              <div className="p-6 flex flex-col flex-1 gap-4">
+                <div className="flex-1">
                   <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
                     {project.title[language]}
                   </h3>
@@ -69,37 +87,41 @@ export function Projects() {
                 </div>
 
                 {/* Botones Acción */}
-                <div className="flex gap-3 pt-2">
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all"
-                    asChild
-                  >
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${t('projects.ariaCode')} ${project.title[language]} en GitHub`}
+                <div className="flex gap-3 pt-2 mt-auto">
+                  {project.githubUrl && (
+                    <Button
+                      size="sm"
+                      className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all"
+                      asChild
                     >
-                      {t('projects.code')}
-                      <Github className="h-4 w-4" />
-                    </a>
-                  </Button>
-                  <Button 
-                    size="sm" 
-                    className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all" 
-                    asChild
-                  >
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${t('projects.ariaDemo')} ${project.title[language]}`}
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${t('projects.ariaCode')} ${project.title[language]} en GitHub`}
+                      >
+                        {t('projects.code')}
+                        <Github className="h-4 w-4" />
+                      </a>
+                    </Button>
+                  )}
+                  {project.demoUrl && (
+                    <Button 
+                      size="sm" 
+                      className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all" 
+                      asChild
                     >
-                      {t('projects.demo')}
-                      <ExternalLink className="h-4 w-4" />
-                    </a>
-                  </Button>
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${t('projects.ariaDemo')} ${project.title[language]}`}
+                      >
+                        {t('projects.demo')}
+                        <ExternalLink className="h-4 w-4" />
+                      </a>
+                    </Button>
+                  )}
                 </div>
               </div>
             </Card>

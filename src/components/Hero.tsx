@@ -1,16 +1,9 @@
 import { FolderOpen, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import oscarProfile from "@/assets/foto_perfil.png";
+import oscarProfile from "@/assets/foto_perfil.webp";
 import { useI18n } from "@/contexts/I18nContext";
 export function Hero() {
   const { t } = useI18n();
-  const scrollToProjects = () => {
-    const element = document.querySelector("#projects");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative">
       <div className="absolute inset-0 bg-gradient-hero"></div>
@@ -49,11 +42,13 @@ export function Hero() {
           {/* Botones */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center reveal-delay-2">
             <Button
-              onClick={scrollToProjects}
+              asChild
               className="w-44 bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all"
             >
-              {t('hero.viewProjects')}
-              <FolderOpen className="h-4 w-4" />
+              <a href="#projects">
+                {t('hero.viewProjects')}
+                <FolderOpen className="h-4 w-4" />
+              </a>
             </Button>
             
             <Button asChild className="w-44 bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all">
