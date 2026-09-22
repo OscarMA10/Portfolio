@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageToggle } from "./LanguageToggle";
-import { useI18n } from "@/contexts/I18nContext";
+import { useI18n, type TranslationKey } from "@/contexts/I18nContext";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 
@@ -75,7 +75,7 @@ export function Header() {
                       : "text-muted-foreground hover:text-primary"
                   }`}
                 >
-                  {t(item.key as any)}
+                  {t(item.key as TranslationKey)}
                   <span
                     className={`absolute inset-x-0 bottom-0 h-0.5 bg-primary transform transition-transform duration-200 origin-left ${
                       activeSection === item.href ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
@@ -124,7 +124,7 @@ export function Header() {
                       : "text-muted-foreground hover:text-primary"
                   }`}
                 >
-                  {t(item.key as any)}
+                  {t(item.key as TranslationKey)}
                 </a>
               ))}
             </div>

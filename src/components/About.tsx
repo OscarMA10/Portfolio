@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { useI18n } from "@/contexts/I18nContext";
+import { useI18n, type TranslationKey } from "@/contexts/I18nContext";
 import {
   SiHtml5,
   SiCss,
@@ -101,7 +101,7 @@ export function About() {
           <div className="space-y-12">
             {/* Texto Descriptivo */}
             <div className="space-y-8">
-              <div className="prose prose-lg max-w-none text-justify">
+              <div className="prose prose-lg max-w-none">
                 <p className="text-muted-foreground leading-relaxed text-lg">
                   {t('about.p1')}
                 </p>
@@ -132,7 +132,7 @@ export function About() {
                         </div>
                         <div>
                           <h4 className="font-semibold text-sm">{skill.name}</h4>
-                          <p className="text-xs text-muted-foreground mt-1">{t(skill.levelKey as any)}</p>
+                          <p className="text-xs text-muted-foreground mt-1">{t(skill.levelKey as TranslationKey)}</p>
                         </div>
                       </div>
                     </Card>

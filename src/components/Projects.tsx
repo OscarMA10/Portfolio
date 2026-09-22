@@ -41,7 +41,7 @@ export function Projects() {
                         {/* Imagen contenedora */}
                         <img
                           src={project.image}
-                          alt={`Imagen del proyecto ${project.title}`}
+                          alt={`${t('projects.imageAlt')} ${project.title[language]}`}
                           className="absolute inset-0 m-auto h-full w-auto object-contain z-10 p-2"
                           loading="lazy"
                           decoding="async"
@@ -50,7 +50,7 @@ export function Projects() {
                     ) : (
                       <img
                         src={project.image}
-                        alt={`Imagen del proyecto ${project.title}`}
+                        alt={`${t('projects.imageAlt')} ${project.title[language]}`}
                         className="w-full h-full"
                         loading="lazy"
                         decoding="async"
@@ -98,7 +98,7 @@ export function Projects() {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label={`${t('projects.ariaCode')} ${project.title[language]} en GitHub`}
+                        aria-label={`${t('projects.ariaCode')} ${project.title[language]} ${t('projects.onGithub')}`}
                       >
                         {t('projects.code')}
                         <Github className="h-4 w-4" />

@@ -36,6 +36,8 @@ const translations: Translations = {
   'projects.demo': { es: 'Demo', en: 'Demo' },
   'projects.ariaCode': { es: 'Ver código del proyecto', en: 'View project code' },
   'projects.ariaDemo': { es: 'Abrir demo del proyecto', en: 'Open project demo' },
+  'projects.onGithub': { es: 'en GitHub', en: 'on GitHub' },
+  'projects.imageAlt': { es: 'Imagen del proyecto', en: 'Project image' },
 
   'experience.title': { es: 'Formación y Experiencia', en: 'Education & Experience' },
 
@@ -52,11 +54,13 @@ const translations: Translations = {
   'notfound.back': { es: 'Volver al Inicio', en: 'Back to Home' },
 };
 
+export type TranslationKey = keyof typeof translations;
+
 type I18nContextValue = {
   language: Language;
   setLanguage: (lang: Language) => void;
   toggleLanguage: () => void;
-  t: (key: keyof typeof translations) => string;
+  t: (key: TranslationKey) => string;
 };
 
 const I18nContext = createContext<I18nContextValue | undefined>(undefined);
