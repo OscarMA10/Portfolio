@@ -70,7 +70,7 @@ export function Footer() {
           {/* Copyright */}
           <div>
             <p className="text-muted-foreground text-sm">
-              © 2025 Óscar Medina Amat. {t('footer.rights')}
+              © {new Date().getFullYear()} Óscar Medina Amat. {t('footer.rights')}
             </p>
           </div>
 

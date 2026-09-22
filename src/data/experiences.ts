@@ -43,4 +43,18 @@ export const experiences: ExperienceItem[] = [
     },
     skills: ['PHP', 'MySQL', 'CRM', 'Integración de Sistemas'],
   },
+  {
+    id: 3,
+    type: 'work',
+    title: { es: 'Programador Web y Especialista SEO', en: 'Web Developer & SEO Specialist' },
+    organization: { es: 'Anuubis Solutions', en: 'Anuubis Solutions' },
+    location: { es: 'Petrer, Alicante', en: 'Petrer, Alicante' },
+    startDate: { es: 'Febrero 2026', en: 'February 2026' },
+    endDate: { es: 'Julio 2026', en: 'July 2026' },
+    description: {
+      es: 'Desarrollo y mantenimiento de sitios web mediante código y WordPress, así como optimización SEO y seguimiento del posicionamiento. Uso de herramientas como Google Search Console, Google Analytics, PageSpeed Insights, SE Ranking y True Ranker para analizar el rendimiento y mejorar la visibilidad y tráfico orgánico.',
+      en: 'Development and maintenance of websites through code and WordPress, along with SEO optimization and ranking tracking. Use of tools such as Google Search Console, Google Analytics, PageSpeed Insights, SE Ranking and True Ranker to analyze performance and improve organic visibility and traffic.',
+    },
+    skills: ['WordPress', 'SEO', 'Google Search Console', 'Google Analytics', 'PageSpeed Insights'],
+  },
 ];

@@ -15,7 +15,8 @@ export function SEO({ title, description, image, url }: SEOProps) {
   const activeTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.title;
   const activeDescription = description || siteConfig.description;
   const activeUrl = url || siteConfig.url;
-  const activeImage = image || siteConfig.ogImage;
+  const rawImage = image || siteConfig.ogImage;
+  const activeImage = rawImage.startsWith('http') ? rawImage : `${siteConfig.url}${rawImage}`;
 
   return (
     <Helmet prioritizeSeoTags>
@@ -28,14 +29,14 @@ export function SEO({ title, description, image, url }: SEOProps) {
       <meta property="og:url" content={activeUrl} />
       <meta property="og:title" content={activeTitle} />
       <meta property="og:description" content={activeDescription} />
-      {image && <meta property="og:image" content={image} />}
+      <meta property="og:image" content={activeImage} />
 
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content={activeUrl} />
       <meta property="twitter:title" content={activeTitle} />
       <meta property="twitter:description" content={activeDescription} />
-      {image && <meta property="twitter:image" content={image} />}
+      <meta property="twitter:image" content={activeImage} />
     </Helmet>
   );
 }

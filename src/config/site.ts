@@ -5,13 +5,13 @@ export const siteConfig = {
   title: "Óscar Medina Amat | Desarrollador Web Full Stack",
   description: "Desarrollador Web Full Stack especializado en Angular, React, Node.js y tecnologías modernas. Graduado en Ingeniería Multimedia por la Universidad de Alicante. Descubre mis proyectos y experiencia profesional.",
   url: "https://oscar-medina-amat.vercel.app",
-  ogImage: "/og-image.svg",
+  ogImage: "/og-image.png",
   role: "Desarrollador Web Full Stack",
   email: "oscarmedinaamat@gmail.com",
   social: {
     linkedin: {
-      url: "https://www.linkedin.com/in/óscar-medina-amat",
-      username: "óscar-medina-amat",
+      url: "https://www.linkedin.com/in/oscar-medina-amat",
+      username: "oscar-medina-amat",
       icon: Linkedin,
     },
     github: {
