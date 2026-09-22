@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 import { useI18n } from "@/contexts/I18nContext";
 import {
   SiHtml5,
-  SiCss3,
+  SiCss,
   SiJavascript,
   SiTypescript,
   SiMysql,
@@ -70,7 +70,7 @@ export function About() {
   const skills = [
     // Avanzado
     { name: "HTML", icon: SiHtml5, levelKey: 'skills.level.advanced', color: "#E34F26" },
-    { name: "CSS", icon: SiCss3, levelKey: 'skills.level.advanced', color: "#1572B6" },
+    { name: "CSS", icon: SiCss, levelKey: 'skills.level.advanced', color: "#1572B6" },
     { name: "JavaScript", icon: SiJavascript, levelKey: 'skills.level.advanced', color: "#F7DF1E" },
     { name: "TypeScript", icon: SiTypescript, levelKey: 'skills.level.advanced', color: "#3178C6" },
     { name: "Angular", icon: SiAngular, levelKey: 'skills.level.advanced', color: "#DD0031" },
