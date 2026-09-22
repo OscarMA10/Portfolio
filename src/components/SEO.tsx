@@ -30,6 +30,7 @@ export function SEO({ title, description, image, url }: SEOProps) {
       <meta property="og:title" content={activeTitle} />
       <meta property="og:description" content={activeDescription} />
       <meta property="og:image" content={activeImage} />
+      <meta property="og:locale" content={language === 'es' ? 'es_ES' : 'en_US'} />
 
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />

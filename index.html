@@ -29,11 +29,45 @@
         <meta name="twitter:image" content="/og-image.png"/>
         
         <!-- Tema y Apariencia -->
-        <meta name="theme-color" content="#3b82f6"/>
+        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)"/>
+        <meta name="theme-color" content="#0f1729" media="(prefers-color-scheme: dark)"/>
         <meta name="color-scheme" content="light dark"/>
-        
+
         <!-- Favicon -->
         <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+
+        <!-- Fuentes -->
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+        <!-- Datos Estructurados (Schema.org) -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Óscar Medina Amat",
+          "url": "https://oscar-medina-amat.vercel.app",
+          "image": "https://oscar-medina-amat.vercel.app/og-image.png",
+          "jobTitle": "Desarrollador Web Full Stack",
+          "email": "mailto:oscarmedinaamat@gmail.com",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Petrer",
+            "addressRegion": "Alicante",
+            "addressCountry": "ES"
+          },
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Universidad de Alicante"
+          },
+          "knowsAbout": ["HTML", "CSS", "JavaScript", "TypeScript", "Angular", "React", "Node.js", "PHP", "MySQL", "MongoDB", "WordPress", "SEO"],
+          "sameAs": [
+            "https://www.linkedin.com/in/oscar-medina-amat",
+            "https://github.com/OscarMA10"
+          ]
+        }
+        </script>
     </head>
 
     <body>
