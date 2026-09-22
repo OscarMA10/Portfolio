@@ -9,10 +9,13 @@ Single Page Application (SPA) profesional creada con React 18, Vite y Tailwind C
 - **Configuración Centralizada**: Gestión sencilla de datos globales en `src/config/site.ts`.
 - **SEO Optimizado**:
   - Títulos dinámicos con `react-helmet-async`.
+  - Datos estructurados JSON-LD (`schema.org/Person`) en `index.html`.
   - Sitemap (`sitemap.xml`) y `robots.txt` incluidos.
   - Etiquetas OpenGraph y Twitter Cards para redes sociales.
 - **Internacionalización**: Soporte completo ES/EN con persistencia.
 - **Adaptabilidad**: Diseño 100% Responsive. Soporte especial para capturas de apps móviles verticales.
+- **Seguridad**: Cabeceras HTTP (CSP, X-Frame-Options, etc.) definidas en `vercel.json`.
+- **Analíticas**: Vercel Web Analytics (`@vercel/analytics`).
 
 ## Stack Tecnológico
 
@@ -28,7 +31,7 @@ Single Page Application (SPA) profesional creada con React 18, Vite y Tailwind C
 ```text
 public/
 ├── favicon.ico
-├── og-image.svg
+├── og-image.png
 ├── Oscar_Medina_Amat_CV.pdf
 ├── robots.txt
 └── sitemap.xml
@@ -79,8 +82,12 @@ Edita `src/data/projects.ts`.
 
 El componente `<SEO/>` gestiona automáticamente los metadatos.
 
-- Para cambiar la imagen por defecto al compartir en redes, reemplaza `public/og-image.svg`.
+- Para cambiar la imagen por defecto al compartir en redes, reemplaza `public/og-image.png` (1200×630, formato raster: Facebook/LinkedIn/X no soportan SVG en `og:image`).
 
 ## Licencia
 
 Uso personal. Siéntete libre de usar este código como base para tu propio portfolio.
+
+---
+
+Contexto técnico más detallado (arquitectura, convenciones, historial de cambios) en [`CLAUDE.md`](./CLAUDE.md).
