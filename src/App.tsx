@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { I18nProvider } from "@/contexts/I18nContext";
 import { HelmetProvider } from "react-helmet-async";
@@ -14,6 +15,7 @@ const App = () => {
       <I18nProvider>
         <HelmetProvider>
           <ScrollToTop />
+          <Analytics />
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index/>}/>
